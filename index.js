@@ -56,3 +56,39 @@ const bookAY = book.bind(finnair);
 bookWA(1122, "Eva Larsson");
 bookKL(3355, "Lina Eriksson");
 bookAY(7788, "Erland Arvidsson");
+
+// Skapa en "partial" application
+// betyder att delar av argumenten redan är definierade/satta
+const bookWA6498 = book.bind(cityhopper, 6498);
+bookWA6498("Leif Gustavsson");
+bookWA6498("Eva Gustavsson");
+
+// Working with events
+finnair.meals = 200;
+// Metod
+// finnair.addMeal = function (e) {
+//   console.log(e);
+//   console.log(this);
+//   this.meals++;
+//   console.log(this.meals);
+// };
+
+finnair.addMeal = () => {
+  finnair.meals++;
+  console.log(finnair.meals);
+};
+
+document.querySelector("#btn").addEventListener("click", finnair.addMeal);
+// document.querySelector("#btn").addEventListener("click", (e) => console.log(e));
+// document
+//   .querySelector("#btn")
+//   .addEventListener("click", finnair.addMeal.bind(finnair));
+document
+  .querySelector("#btn")
+  .addEventListener("click", finnair.addMeal);
+document
+  .querySelector("#btn")
+  .addEventListener("click", () => finnair.addMeal());
+
+
+// Partial application
