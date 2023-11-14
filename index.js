@@ -83,12 +83,38 @@ document.querySelector("#btn").addEventListener("click", finnair.addMeal);
 // document
 //   .querySelector("#btn")
 //   .addEventListener("click", finnair.addMeal.bind(finnair));
-document
-  .querySelector("#btn")
-  .addEventListener("click", finnair.addMeal);
+document.querySelector("#btn").addEventListener("click", finnair.addMeal);
 document
   .querySelector("#btn")
   .addEventListener("click", () => finnair.addMeal());
 
-
 // Partial application
+
+const calculateVAT = (rate, value) => value + value * rate;
+
+console.log("Inklusive moms: ", calculateVAT(0.25, 200));
+
+// bad practice att duplicera
+// const calculateGroceryVAT = (rate, value) => value + value * rate;
+// console.log("Inklusive moms:", calculateGroceryVAT(0.12, 21.08));
+
+// null för calculateVAT är arrow function
+const groceryVAT = calculateVAT.bind(null, 0.12);
+console.log("Livsmedel inklusive moms:", groceryVAT(21.08).toFixed(2));
+
+// IIFE Immediately invoked function expression
+
+(function () {
+  var x = 10;
+  console.log("IIFE is running")
+})();
+
+function test() {
+  // Scopade till test, kan inte läcka ut
+  const x = 10;
+  let y;
+}
+
+
+
+(() => {console.log("IIFE is running inside an arrow function")})();
