@@ -1,11 +1,11 @@
-const klm = {
+const KLM = {
   airline: "KLM",
   iataCode: "KL",
   bookings: [],
   // book: function () {};
   book(flightNumber, passenger) {
     console.log(
-      `${passenger} har bokat en plats med ${this.airline} och flightnummer ${this.flightNumber}`
+      `${passenger} har bokat en plats med ${this.airline} och flightnummer ${flightNumber}`
     );
     this.bookings.push({
       flight: `${this.iataCode}${flightNumber}`,
@@ -14,6 +14,45 @@ const klm = {
   },
 };
 
-klm.book(1178, "Michael Gustavsson");
-klm.book(1178, "Annika Gustavsson");
-klm.book(2278, "Bertil Jonsson");
+KLM.book(1178, "Michael Gustavsson");
+KLM.book(1178, "Annika Gustavsson");
+KLM.book(2278, "Bertil Jonsson");
+
+const cityhopper = {
+  airline: "KLM Cityhopper",
+  iataCode: "WA",
+  bookings: [],
+};
+
+const book = KLM.book;
+// book(3322, "Claes Stjernlöf");
+
+book.call(cityhopper, 3322, "Claes Stjernlöf");
+book.call(KLM, 4569, "Ulf örnqvist");
+console.log(KLM);
+
+const finnair = {
+  airline: "Finnair",
+  iataCode: "AY",
+  bookings: [],
+};
+
+book.call(finnair, 1111, "Lars Hansson");
+
+// Exempel på omodern javascript
+// Metoden apply...
+const flightInfo = [4431, "Oscar Jacobsson"];
+book.apply(finnair, flightInfo);
+
+// Gör så här istället
+book.call(cityhopper, ...flightInfo);
+
+// Mer modern: metoden bind
+// returnerar alltid en ny funktion
+const bookWA = book.bind(cityhopper);
+const bookKL = book.bind(KLM);
+const bookAY = book.bind(finnair);
+
+bookWA(1122, "Eva Larsson");
+bookKL(3355, "Lina Eriksson");
+bookAY(7788, "Erland Arvidsson");
