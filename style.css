@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap");
+
+:root {
+  --primary-color: #01579b;
+  --text-color: #f4f4f4;
+  --secondary-color: #1a237e;
+  --border-color: #03a9f4;
+  --error-background-color: #d84315;
+  --error-color: #ffab91;
+  --warning-background-color: #ff6f00;
+  --warning-color: #ffe082;
+  --info-background-color: #1565c0;
+  --info-color: #96f5f7;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #f4f4f4;
+  height: 100vh;
+  background-image: linear-gradient(
+    to bottom,
+    #0d47a1,
+    #2a67b9,
+    #4988d0,
+    #6ba9e5,
+    #90caf9
+  );
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1.25rem 0rem;
+}
+
+header {
+  margin-bottom: 2rem;
+}
+
+.btn {
+  display: inline-block;
+  margin: 0.5rem 0;
+  font-size: 0.8rem;
+  color: var(--text-color);
+  background: var(--primary-color);
+  border: solid 1px transparent;
+  line-height: 1.2;
+  max-width: 200px;
+  white-space: nowrap;
+  text-decoration: none;
+  padding: 0.5rem 1.25rem;
+  outline: none !important;
+  cursor: pointer;
+}
